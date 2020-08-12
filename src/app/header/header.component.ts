@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../_services/DataService';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   collapsed = true;
-  constructor() { }
+  SearchText: string;
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
+  }
+
+  SearchTextChanged() {
+    this.dataService._SearchText = this.SearchText;
   }
 
 }

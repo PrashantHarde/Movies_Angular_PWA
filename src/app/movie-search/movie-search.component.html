@@ -1,146 +1,122 @@
 <div class="container">
-	<div class="movie-card">
-		<div class="movie-header manOfSteel">
-			<div class="header-icon-container">
-				<a href="#">
-					<i class="material-icons header-icon"></i>
-				</a>
+	<div class="row">
+		<div class="movie-card col" *ngFor="let item of SearchedMovies" (click)="selectedMovieClicked(item)"
+			data-toggle="modal" data-target="#myModal">
+			<div class="movie-header" [ngStyle]="{'background':'url(' + item.Poster}" style="background-size: cover">
+				<div class="header-icon-container">
+					<a href="#">
+						<i class="material-icons header-icon"></i>
+					</a>
+				</div>
 			</div>
-		</div><!--movie-header-->
-		<div class="movie-content">
-			<div class="movie-content-header">
-				<a href="#">
-					<h3 class="movie-title">Man of Steel</h3>
-				</a>
-				<div class="imax-logo"></div>
+			<!--movie-header-->
+			<div class="movie-content">
+				<div class="movie-content-header">
+					<a href="\">
+						<h3 class="movie-title">{{item.Title}}</h3>
+						<h5>({{item.Year}})</h5>
+					</a>
+					<div class="imax-logo"></div>
+				</div>
+				<div class="movie-info">
+					<div class="info-section">
+						<label>IMDB Rating</label>
+						<span>{{item.imdbID}}</span>
+					</div>
+					<!--date,time-->
+					<div class="info-section">
+						<label>Type</label>
+						<span>{{item.Type}}</span>
+					</div>
+				</div>
 			</div>
-			<div class="movie-info">
-				<div class="info-section">
-					<label>Date & Time</label>
-					<span>Sun 8 Sept - 10:00PM</span>
-				</div><!--date,time-->
-				<div class="info-section">
-					<label>Screen</label>
-					<span>03</span>
-				</div><!--screen-->
-				<div class="info-section">
-					<label>Row</label>
-					<span>F</span>
-				</div><!--row-->
-				<div class="info-section">
-					<label>Seat</label>
-					<span>21,22</span>
-				</div><!--seat-->
+			<!--movie-content-->
+		</div>
+		<!--movie-card-->
+
+	</div>
+
+
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" role="dialog">
+
+		<div class='card'>
+			<div class='card_left'>
+				<img [src]="selectedMovie?.Poster">
 			</div>
-		</div><!--movie-content-->
-	</div><!--movie-card-->
-	
-	<div class="movie-card">
-		<div class="movie-header babyDriver">
-			<div class="header-icon-container">
-				<a href="#">
-					<i class="material-icons header-icon"></i>
-				</a>
+			<div class='card_right'>
+				<h1>{{selectedMovie?.Title}}</h1>
+				<div class='card_right__details'>
+					<ul>
+						<li>{{selectedMovie?.Year}}</li>
+						<li>{{selectedMovie?.Runtime}}</li>
+						<li>{{selectedMovie?.Type}}</li>
+					</ul>
+					<div class='card_right__rating'>
+						<div class='card_right__rating__stars'>
+							<fieldset class='rating'>
+								<input id='star10' name='rating' type='radio' value='10'>
+								<label class='full' for='star10' title='10 stars'></label>
+								<input id='star9half' name='rating' type='radio' value='9 and a half'>
+								<label class='half' for='star9half' title='9.5 stars'></label>
+								<input id='star9' name='rating' type='radio' value='9'>
+								<label class='full' for='star9' title='9 stars'></label>
+								<input id='star8half' name='rating' type='radio' value='8 and a half'>
+								<label class='half' for='star8half' title='8.5 stars'></label>
+								<input id='star8' name='rating' type='radio' value='8'>
+								<label class='full' for='star8' title='8 stars'></label>
+								<input id='star7half' name='rating' type='radio' value='7 and a half'>
+								<label class='half' for='star7half' title='7.5 stars'></label>
+								<input id='star7' name='rating' type='radio' value='7'>
+								<label class='full' for='star7' title='7 stars'></label>
+								<input id='star6half' name='rating' type='radio' value='6 and a half'>
+								<label class='half' for='star6half' title='6.5 stars'></label>
+								<input id='star6' name='rating' type='radio' value='6'>
+								<label class='full' for='star6' title='6 star'></label>
+								<input id='star5half' name='rating' type='radio' value='5 and a half'>
+								<label class='half' for='star5half' title='5.5 stars'></label>
+								<input id='star5' name='rating' type='radio' value='5'>
+								<label class='full' for='star5' title='5 stars'></label>
+								<input id='star4half' name='rating' type='radio' value='4 and a half'>
+								<label class='half' for='star4half' title='4.5 stars'></label>
+								<input id='star4' name='rating' type='radio' value='4'>
+								<label class='full' for='star4' title='4 stars'></label>
+								<input id='star3half' name='rating' type='radio' value='3 and a half'>
+								<label class='half' for='star3half' title='3.5 stars'></label>
+								<input id='star3' name='rating' type='radio' value='3'>
+								<label class='full' for='star3' title='3 stars'></label>
+								<input id='star2half' name='rating' type='radio' value='2 and a half'>
+								<label class='half' for='star2half' title='2.5 stars'></label>
+								<input id='star2' name='rating' type='radio' value='2'>
+								<label class='full' for='star2' title='2 stars'></label>
+								<input id='star1half' name='rating' type='radio' value='1 and a half'>
+								<label class='half' for='star1half' title='1.5 stars'></label>
+								<input id='star1' name='rating' type='radio' value='1'>
+								<label class='full' for='star1' title='1 star'></label>
+								<input id='starhalf' name='rating' type='radio' value='half'>
+								<label class='half' for='starhalf' title='0.5 stars'></label>
+							</fieldset>
+						</div>
+					</div>
+					<div class='card_right__review'>
+						<p>{{selectedMovie?.Production}}</p>
+						<p>{{selectedMovie?.Genre}}</p>
+						<p>{{selectedMovie?.Director}}</p>
+						<p>{{selectedMovie?.Writer}}</p>
+						<p>{{selectedMovie?.Actors}}</p>
+						<p>{{selectedMovie?.Plot}}</p>
+						<p>{{selectedMovie?.Language}}</p>
+						<p>{{selectedMovie?.Country}}</p>
+						<p>{{selectedMovie?.Awards}}</p>
+						<a [href]="'http://www.imdb.com/title/'+selectedMovie?.imdbID+'/plotsummary?ref_=tt_stry_pl'"
+							target='_blank'>
+							Read more
+						</a>
+					</div>
+				</div>
 			</div>
-		</div><!--movie-header-->
-		<div class="movie-content">
-			<div class="movie-content-header">
-				<a href="#">
-					<h3 class="movie-title">Baby Driver</h3>
-				</a>
-				<div class="imax-logo"></div>
-			</div>
-			<div class="movie-info">
-				<div class="info-section">
-					<label>Date & Time</label>
-					<span>Tue 4 July - 05:00PM</span>
-				</div><!--date,time-->
-				<div class="info-section">
-					<label>Screen</label>
-					<span>01</span>
-				</div><!--screen-->
-				<div class="info-section">
-					<label>Row</label>
-					<span>H</span>
-				</div><!--row-->
-				<div class="info-section">
-					<label>Seat</label>
-					<span>15</span>
-				</div><!--seat-->
-			</div>
-		</div><!--movie-content-->
-	</div><!--movie-card-->
-	
-	<div class="movie-card">
-		<div class="movie-header theDarkTower">
-			<div class="header-icon-container">
-				<a href="#">
-					<i class="material-icons header-icon"></i>
-				</a>
-			</div>
-		</div><!--movie-header-->
-		<div class="movie-content">
-			<div class="movie-content-header">
-				<a href="#">
-					<h3 class="movie-title">The Dark Tower</h3>
-				</a>
-				<div class="imax-logo"></div>
-			</div>
-			<div class="movie-info">
-				<div class="info-section">
-					<label>Date & Time</label>
-					<span>Wed 16 Aug - 07:00PM</span>
-				</div><!--date,time-->
-				<div class="info-section">
-					<label>Screen</label>
-					<span>06</span>
-				</div><!--screen-->
-				<div class="info-section">
-					<label>Row</label>
-					<span>C</span>
-				</div><!--row-->
-				<div class="info-section">
-					<label>Seat</label>
-					<span>18</span>
-				</div><!--seat-->
-			</div>
-		</div><!--movie-content-->
-	</div><!--movie-card-->
-	
-	<div class="movie-card">
-		<div class="movie-header bladeRunner2049">
-			<div class="header-icon-container">
-				<a href="#">
-					<i class="material-icons header-icon"></i>
-				</a>
-			</div>
-		</div><!--movie-header-->
-		<div class="movie-content">
-			<div class="movie-content-header">
-				<a href="#">
-					<h3 class="movie-title">Blade Runner 2049</h3>
-				</a>
-				<div class="imax-logo"></div>
-			</div>
-			<div class="movie-info">
-				<div class="info-section">
-					<label>Date & Time</label>
-					<span>Mon 16 Oct - 10:00PM</span>
-				</div><!--date,time-->
-				<div class="info-section">
-					<label>Screen</label>
-					<span>06</span>
-				</div><!--screen-->
-				<div class="info-section">
-					<label>Row</label>
-					<span>D</span>
-				</div><!--row-->
-				<div class="info-section">
-					<label>Seat</label>
-					<span>05,06</span>
-				</div><!--seat-->
-			</div>
-		</div><!--movie-content-->
-	</div><!--movie-card-->
-	
-</div><!--container-->
+		</div>
+
+	</div>
+</div>
+<!--container-->
